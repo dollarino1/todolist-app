@@ -1,6 +1,7 @@
 import { mainAPI } from "../api/api"
 
 const ADD_TASK = 'ADD_TASK'
+const UPDATE_TASK_TEXT = 'UPDATE_TASK_TEXT'
 
 let initialState = {
     TaskData: [
@@ -21,11 +22,17 @@ const mainReducer = (state = initialState, action) => {
                 ...state,
                 TaskData: [...state.TaskData, newTask]
             }
+        case UPDATE_TASK_TEXT:
+            return {
+                ...state,
+                TaskData: [...state.TaskData],
+            }
     }
     return state;
 }
 
 export const addTask = (inputTaskText) => ({type: ADD_TASK, inputTaskText})
+export const updateTaskText = (taskText) => ({type: UPDATE_TASK_TEXT, taskText})
 
 export const addTaskThunk = (taskText) => async (dispatch) => {
     let data = await mainAPI.addTask(taskText)

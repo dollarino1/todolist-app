@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import Main from './Main'
-import { addTask } from './../redux/mainReducer'
+import { addTask, updateTaskText } from './../redux/mainReducer'
 
 const MainContainer = (props) => {
     return (
@@ -17,5 +17,5 @@ let mapStateToProps = (state) => {
     }
 }
 export default compose(
-    connect(mapStateToProps, { addTask })
+    connect(mapStateToProps, { addTask, updateTaskText })
 )(MainContainer)

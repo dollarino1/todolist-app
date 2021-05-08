@@ -25,7 +25,7 @@ const Main = (props) => {
         }
     })
 
-    let taskElements = props.TaskData.map(t => <MyTasks key={t.id} taskText={t.taskText}/>)
+    let taskElements = props.TaskData.map(p => <MyTasks key={p.id} taskText={p.taskText} updateTaskText={props.updateTaskText}/>)
 
     return <div className="main__section">
         <form className="main__form" onSubmit={formik.handleSubmit}>
