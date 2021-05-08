@@ -30,7 +30,7 @@ export const addTask = (inputTaskText) => ({type: ADD_TASK, inputTaskText})
 export const addTaskThunk = (taskText) => async (dispatch) => {
     let data = await mainAPI.addTask(taskText)
     if (data.resultCode === 0) {
-        dispatch(addTask(description))
+        dispatch(addTask())
     }
 }
 

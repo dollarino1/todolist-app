@@ -1,9 +1,9 @@
 import React from 'react'
 
 const MyTasks = (props) => {
-    return <div>
+    return <div id='checklist' className="main__task">
         <input type="checkbox" name="taskCheckbox" id=""/>
-        <span>{props.taskText}</span>
+        <label>{props.taskText}</label>
     </div>
 }
 export default MyTasks

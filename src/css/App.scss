@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.App {
+  text-align: center;
+}
+.App__wrapper {
+  width: 750px;
+  margin: 0 auto;
+  background: rgba(238, 238, 238, 0.671);
+    border-radius: 20px;
+}
+.main__section {
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px;
+  padding-bottom: 50px;
+}
+
+.main__form {
+
+}
+.main__tasklist {
+    margin-top: 30px;
+    padding-right: 125px;
+    input {
+        margin-right: 10px;
+    }
+}
+.main__task {
+    border-bottom: rgba(0, 0, 0, 0.178) 1px solid;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+@import '_input';
+@import '_checkbox';
+

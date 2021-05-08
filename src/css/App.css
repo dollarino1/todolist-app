@@ -1,0 +1,540 @@
+@import url("https://fonts.googleapis.com/css?family=Dosis");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  text-align: center;
+}
+
+.App__wrapper {
+  width: 750px;
+  margin: 0 auto;
+  background: rgba(238, 238, 238, 0.671);
+  border-radius: 20px;
+}
+
+.main__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 100px;
+  padding-bottom: 50px;
+}
+
+.main__tasklist {
+  margin-top: 30px;
+  padding-right: 125px;
+}
+
+.main__tasklist input {
+  margin-right: 10px;
+}
+
+.main__task {
+  border-bottom: rgba(0, 0, 0, 0.178) 1px solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+:root {
+  /* generic */
+  --gutterSm: 0.4rem;
+  --gutterMd: 0.8rem;
+  --gutterLg: 1.6rem;
+  --gutterXl: 2.4rem;
+  --gutterXx: 7.2rem;
+  --colorPrimary400: #7e57c2;
+  --colorPrimary600: #5e35b1;
+  --colorPrimary800: #4527a0;
+  --fontFamily: "Dosis", sans-serif;
+  --fontSizeSm: 1.2rem;
+  --fontSizeMd: 1.6rem;
+  --fontSizeLg: 2.1rem;
+  --fontSizeXl: 2.8rem;
+  --fontSizeXx: 3.6rem;
+  --lineHeightSm: 1.1;
+  --lineHeightMd: 1.8;
+  --transitionDuration: 300ms;
+  --transitionTF: cubic-bezier(0.645, 0.045, 0.355, 1);
+  /* floated labels */
+  --inputPaddingV: var(--gutterMd);
+  --inputPaddingH: var(--gutterLg);
+  --inputFontSize: var(--fontSizeLg);
+  --inputLineHeight: var(--lineHeightMd);
+  --labelScaleFactor: 0.8;
+  --labelDefaultPosY: 50%;
+  --labelTransformedPosY: calc(
+    (var(--labelDefaultPosY)) - 
+    (var(--inputPaddingV) * var(--labelScaleFactor)) - 
+    (var(--inputFontSize) * var(--inputLineHeight))
+  );
+  --inputTransitionDuration: var(--transitionDuration);
+  --inputTransitionTF: var(--transitionTF);
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  color: #455A64;
+  background-color: #7E57C2;
+  font-family: var(--fontFamily);
+  font-size: var(--fontSizeMd);
+  line-height: var(--lineHeightMd);
+}
+
+.Wrapper {
+  padding-top: 40px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 80%;
+          flex: 0 0 80%;
+  max-width: 80%;
+}
+
+.Title {
+  margin: 0 0 var(--gutterXx) 0;
+  padding: 0;
+  color: #fff;
+  font-size: var(--fontSizeXx);
+  font-weight: 400;
+  line-height: var(--lineHeightSm);
+  text-align: center;
+  text-shadow: -0.1rem 0.1rem 0.2rem var(--colorPrimary800);
+}
+
+.Input {
+  position: relative;
+}
+
+.Input-text {
+  display: block;
+  margin: 0;
+  padding: var(--inputPaddingV) var(--inputPaddingH);
+  color: inherit;
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--inputFontSize);
+  font-weight: inherit;
+  line-height: var(--inputLineHeight);
+  border: none;
+  border-radius: 0.4rem;
+  -webkit-transition: -webkit-box-shadow var(--transitionDuration);
+  transition: -webkit-box-shadow var(--transitionDuration);
+  transition: box-shadow var(--transitionDuration);
+  transition: box-shadow var(--transitionDuration), -webkit-box-shadow var(--transitionDuration);
+}
+
+.Input-text::-webkit-input-placeholder {
+  color: #B0BEC5;
+}
+
+.Input-text:-ms-input-placeholder {
+  color: #B0BEC5;
+}
+
+.Input-text::-ms-input-placeholder {
+  color: #B0BEC5;
+}
+
+.Input-text::placeholder {
+  color: #B0BEC5;
+}
+
+.Input-text:focus {
+  outline: none;
+  -webkit-box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+          box-shadow: 0.2rem 0.8rem 1.6rem var(--colorPrimary600);
+}
+
+.Input-label {
+  display: block;
+  position: absolute;
+  bottom: 50%;
+  left: 1rem;
+  color: #fff;
+  font-family: inherit;
+  font-size: var(--inputFontSize);
+  font-weight: inherit;
+  line-height: var(--inputLineHeight);
+  opacity: 0;
+  -webkit-transform: translate3d(0, var(--labelDefaultPosY), 0) scale(1);
+          transform: translate3d(0, var(--labelDefaultPosY), 0) scale(1);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  -webkit-transition: opacity var(--inputTransitionDuration) var(--inputTransitionTF), visibility 0ms var(--inputTransitionDuration) var(--inputTransitionTF), z-index 0ms var(--inputTransitionDuration) var(--inputTransitionTF), -webkit-transform var(--inputTransitionDuration) var(--inputTransitionTF);
+  transition: opacity var(--inputTransitionDuration) var(--inputTransitionTF), visibility 0ms var(--inputTransitionDuration) var(--inputTransitionTF), z-index 0ms var(--inputTransitionDuration) var(--inputTransitionTF), -webkit-transform var(--inputTransitionDuration) var(--inputTransitionTF);
+  transition: opacity var(--inputTransitionDuration) var(--inputTransitionTF), transform var(--inputTransitionDuration) var(--inputTransitionTF), visibility 0ms var(--inputTransitionDuration) var(--inputTransitionTF), z-index 0ms var(--inputTransitionDuration) var(--inputTransitionTF);
+  transition: opacity var(--inputTransitionDuration) var(--inputTransitionTF), transform var(--inputTransitionDuration) var(--inputTransitionTF), visibility 0ms var(--inputTransitionDuration) var(--inputTransitionTF), z-index 0ms var(--inputTransitionDuration) var(--inputTransitionTF), -webkit-transform var(--inputTransitionDuration) var(--inputTransitionTF);
+}
+
+.Input-text:placeholder-shown + .Input-label {
+  visibility: hidden;
+  z-index: -1;
+}
+
+.Input-text:not(:placeholder-shown) + .Input-label,
+.Input-text:focus:not(:placeholder-shown) + .Input-label {
+  visibility: visible;
+  z-index: 1;
+  opacity: 1;
+  -webkit-transform: translate3d(0, var(--labelTransformedPosY), 0) scale(var(--labelScaleFactor));
+          transform: translate3d(0, var(--labelTransformedPosY), 0) scale(var(--labelScaleFactor));
+  -webkit-transition: visibility 0ms, z-index 0ms, -webkit-transform var(--inputTransitionDuration);
+  transition: visibility 0ms, z-index 0ms, -webkit-transform var(--inputTransitionDuration);
+  transition: transform var(--inputTransitionDuration), visibility 0ms, z-index 0ms;
+  transition: transform var(--inputTransitionDuration), visibility 0ms, z-index 0ms, -webkit-transform var(--inputTransitionDuration);
+}
+
+#checklist {
+  --background: #ffffff;
+  --text: #414856;
+  --check: #4F29F0;
+  --disabled: #C3C8DE;
+  --border-radius: 5px;
+  background: var(--background);
+  border-radius: var(--border-radius);
+  position: relative;
+  -webkit-box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
+          box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
+  padding: 10px 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 30px auto;
+      grid-template-columns: 30px auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#checklist label {
+  color: var(--text);
+  position: relative;
+  cursor: pointer;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-transition: color .3s ease;
+  transition: color .3s ease;
+}
+
+#checklist label::before, #checklist label::after {
+  content: "";
+  position: absolute;
+}
+
+#checklist label::before {
+  height: 2px;
+  width: 8px;
+  left: -27px;
+  background: var(--check);
+  border-radius: 2px;
+  -webkit-transition: background .3s ease;
+  transition: background .3s ease;
+}
+
+#checklist label:after {
+  height: 4px;
+  width: 4px;
+  top: 8px;
+  left: -25px;
+  border-radius: 50%;
+}
+
+#checklist input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  height: 25px;
+  width: 25px;
+  outline: none;
+  border: 0;
+  margin: 0 15px 0 0;
+  cursor: pointer;
+  background: var(--background);
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#checklist input[type="checkbox"]::before, #checklist input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  top: auto;
+  background: var(--check);
+  border-radius: 2px;
+}
+
+#checklist input[type="checkbox"]::before {
+  width: 5px;
+  right: 60%;
+  -webkit-transform-origin: right bottom;
+          transform-origin: right bottom;
+}
+
+#checklist input[type="checkbox"]::after {
+  width: 0px;
+  left: 40%;
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+}
+
+#checklist input[type="checkbox"]:checked::before {
+  -webkit-animation: check-01 .4s ease forwards;
+          animation: check-01 .4s ease forwards;
+}
+
+#checklist input[type="checkbox"]:checked::after {
+  -webkit-animation: check-02 .4s ease forwards;
+          animation: check-02 .4s ease forwards;
+}
+
+#checklist input[type="checkbox"]:checked + label {
+  color: var(--disabled);
+  -webkit-animation: move .3s ease .1s forwards;
+          animation: move .3s ease .1s forwards;
+}
+
+#checklist input[type="checkbox"]:checked + label::before {
+  background: var(--disabled);
+  -webkit-animation: slice .4s ease forwards;
+          animation: slice .4s ease forwards;
+}
+
+#checklist input[type="checkbox"]:checked + label::after {
+  -webkit-animation: firework .5s ease forwards .1s;
+          animation: firework .5s ease forwards .1s;
+}
+
+@-webkit-keyframes move {
+  50% {
+    padding-left: 8px;
+    padding-right: 0px;
+  }
+  100% {
+    padding-right: 4px;
+  }
+}
+
+@keyframes move {
+  50% {
+    padding-left: 8px;
+    padding-right: 0px;
+  }
+  100% {
+    padding-right: 4px;
+  }
+}
+
+@-webkit-keyframes slice {
+  60% {
+    width: 100%;
+    left: 4px;
+  }
+  100% {
+    width: 100%;
+    left: -2px;
+    padding-left: 0;
+  }
+}
+
+@keyframes slice {
+  60% {
+    width: 100%;
+    left: 4px;
+  }
+  100% {
+    width: 100%;
+    left: -2px;
+    padding-left: 0;
+  }
+}
+
+@-webkit-keyframes check-01 {
+  0% {
+    width: 4px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  100% {
+    width: 5px;
+    top: 8px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@keyframes check-01 {
+  0% {
+    width: 4px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+  100% {
+    width: 5px;
+    top: 8px;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@-webkit-keyframes check-02 {
+  0% {
+    width: 4px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  100% {
+    width: 10px;
+    top: 8px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+
+@keyframes check-02 {
+  0% {
+    width: 4px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    width: 0px;
+    top: auto;
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  51% {
+    width: 0px;
+    top: 8px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  100% {
+    width: 10px;
+    top: 8px;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+
+@-webkit-keyframes firework {
+  0% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+            box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+            box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+  }
+}
+
+@keyframes firework {
+  0% {
+    opacity: 1;
+    -webkit-box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+            box-shadow: 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0, 0 0 0 -2px #4F29F0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    -webkit-box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+            box-shadow: 0 -15px 0 0px #4F29F0, 14px -8px 0 0px #4F29F0, 14px 8px 0 0px #4F29F0, 0 15px 0 0px #4F29F0, -14px 8px 0 0px #4F29F0, -14px -8px 0 0px #4F29F0;
+  }
+}
+/*# sourceMappingURL=App.css.map */
