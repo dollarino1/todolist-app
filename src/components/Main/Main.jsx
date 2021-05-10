@@ -2,7 +2,6 @@ import { useFormik } from 'formik'
 import React from 'react'
 import MyTasks from './MyTasks'
 
-
 const Main = (props) => {
 
     const formik = useFormik({
@@ -11,7 +10,7 @@ const Main = (props) => {
         },
         onSubmit: (values) => {
             console.log(values)
-            props.addTask(values.task)
+            props.setTodos([...props.todos, {taskText: values.task, completed: false, id: Math.random() * 1000}])
             formik.resetForm(formik.initialValues)
         },
         validate: values => {
@@ -25,7 +24,8 @@ const Main = (props) => {
         }
     })
 
-    let taskElements = props.TaskData.map(p => <MyTasks key={p.id} taskText={p.taskText} updateTaskText={props.updateTaskText}/>)
+    let taskElements = props.todos.map((todo) => <MyTasks key={todo.id} taskText={todo.taskText} 
+                                                        setTodos={props.setTodos} todos={props.todos} todo={todo}/>)
 
     return <div className="main__section">
         <form className="main__form" onSubmit={formik.handleSubmit}>

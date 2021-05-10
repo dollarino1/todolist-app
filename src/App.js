@@ -1,15 +1,14 @@
 import './css/App.css';
-import React from 'react'
-import MainContainer from './components/Main/MainContainer';
+import React, { useState } from 'react'
+import Main from './components/Main/Main';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
+  const [todos, setTodos] = useState([])
   return (
-    <BrowserRouter>
       <div className="App__wrapper">
-        <MainContainer />
+        <Main setTodos={setTodos} todos={todos} />
       </div>
-    </BrowserRouter>
 
   );
 }

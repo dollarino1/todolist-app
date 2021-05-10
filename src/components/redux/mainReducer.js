@@ -1,5 +1,3 @@
-import { mainAPI } from "../api/api"
-
 const ADD_TASK = 'ADD_TASK'
 const UPDATE_TASK_TEXT = 'UPDATE_TASK_TEXT'
 
@@ -14,7 +12,7 @@ const mainReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_TASK:
             let newTask = {
-                id: 1,
+                id: Math.random() * 1000,
                 taskText: action.inputTaskText,
                 taskChecked: false
             }
@@ -25,7 +23,7 @@ const mainReducer = (state = initialState, action) => {
         case UPDATE_TASK_TEXT:
             return {
                 ...state,
-                TaskData: [...state.TaskData],
+                TaskData: [...state.TaskData, state.TaskData.filter(el => el.id !== state.TaskData.id)]
             }
     }
     return state;
@@ -33,12 +31,5 @@ const mainReducer = (state = initialState, action) => {
 
 export const addTask = (inputTaskText) => ({type: ADD_TASK, inputTaskText})
 export const updateTaskText = (taskText) => ({type: UPDATE_TASK_TEXT, taskText})
-
-export const addTaskThunk = (taskText) => async (dispatch) => {
-    let data = await mainAPI.addTask(taskText)
-    if (data.resultCode === 0) {
-        dispatch(addTask())
-    }
-}
 
 export default mainReducer;
