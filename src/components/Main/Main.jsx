@@ -23,9 +23,13 @@ const Main = (props) => {
             return errors
         }
     })
-
-    let taskElements = props.todos.map((todo) => <MyTasks key={todo.id} taskText={todo.taskText} 
-                                                        setTodos={props.setTodos} todos={props.todos} todo={todo}/>)
+    const statusTaskHandler = (e) => {
+        props.setStatus(e.target.value)
+        console.log(e.target.value)
+    }
+    let taskElements = props.filteredTodos.map((todo) => <MyTasks key={todo.id} taskText={todo.taskText} 
+                                                        setTodos={props.setTodos} todos={props.todos} 
+                                                        todo={todo} completed={todo.completed}/>)
 
     return <div className="main__section">
         <form className="main__form" onSubmit={formik.handleSubmit}>
@@ -39,6 +43,11 @@ const Main = (props) => {
                 </div>
             </div>
         </form>
+        <div className="main__filter">
+            <button onClick={statusTaskHandler} value="completed" className="main__filterOption">Completed</button>
+            <button onClick={statusTaskHandler} value="all" className="main__filterOption">All</button>
+            <button onClick={statusTaskHandler} value="uncompleted" className="main__filterOption">Uncompleted</button>
+        </div>
         <div className='main__tasklist'>
             <h2>My tasks</h2>
             {taskElements}

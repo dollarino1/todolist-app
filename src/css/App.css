@@ -570,4 +570,35 @@ body {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
+
+.main__filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 129px;
+  padding-top: 10px;
+}
+
+.main__filterOption {
+  width: 200px;
+  background: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 3px 0;
+  font-family: "Dosis", sans-serif;
+}
+
+.main__filterOption:hover {
+  background: rgba(255, 255, 255, 0.466);
+  color: white;
+}
+
+button {
+  border: none;
+  font-weight: lighter;
+}
 /*# sourceMappingURL=App.css.map */

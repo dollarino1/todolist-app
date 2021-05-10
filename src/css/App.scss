@@ -71,3 +71,27 @@ a {
 .close:after {
   transform: rotate(-45deg);
 }
+
+.main__filter {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 129px;
+  padding-top: 10px;
+}
+.main__filterOption {
+  width: 200px;
+  background: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  font-size: 17px;
+  padding: 3px 0;
+  font-family: "Dosis", sans-serif;
+}
+.main__filterOption:hover {
+  background:rgba(255, 255, 255, 0.466);
+  color: rgb(255, 255, 255);
+}
+button {
+  border: none;
+  font-weight: lighter;
+}
